@@ -65,9 +65,9 @@ class HomeController extends Controller
                     ->join('paket_weeding', 'pesanan.paket_id', 'paket_weeding.id')
                     ->first();
 
-        if(!$pesanan || $pesanan->user_id !== auth()->user()->id){
-            return redirect("/");
-        }
+        // if(!$pesanan || $pesanan->user_id !== auth()->user()->id){
+        //     return redirect("/");
+        // }
 
         return view('pages.transaksi.detail', compact('pesanan'));
     }
