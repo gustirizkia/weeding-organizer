@@ -47,9 +47,9 @@
                 “ Once in a while, right in the middle of an
                 ordinary life, love gives us a fairy tale. ”
             </p>
-            <div class="btn btn__primary px-5">
+            <a href="#paket" class="btn btn__primary px-5">
                 Mulai
-            </div>
+            </a>
         </div>
     </div>
     <div class="container">
@@ -96,7 +96,7 @@
     </div>
 
     <div class="container my-5">
-        <div class="mb-4 h2">
+        <div class="mb-4 h2" id="paket">
             Pilih Paket Menarik Kami
         </div>
         <div class="row justify-content-center">

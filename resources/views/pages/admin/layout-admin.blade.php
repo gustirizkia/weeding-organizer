@@ -111,6 +111,12 @@
           <span>Paket</span>
         </a>
       </li>
+      <li class="nav-item ">
+        <a class="nav-link collapsed {{request()->is('admin/pesanan-user*') ? 'active' : ''}}" href="{{route('pesanan-user.index')}}">
+          <i class="bi bi-cash-coin"></i>
+          <span>Pesanan</span>
+        </a>
+      </li>
       <!-- End Dashboard Nav -->
     </ul>
 

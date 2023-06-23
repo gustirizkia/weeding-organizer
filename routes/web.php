@@ -2,8 +2,10 @@
 
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PaketController;
+use App\Http\Controllers\Admin\PesananController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserTransaksiController;
 use Illuminate\Support\Facades\Route;
 
@@ -25,6 +27,13 @@ Route::get('/detail-transaksi', [HomeController::class, 'detailTransaksi'])->mid
 Route::post('/checkout', [HomeController::class, 'checkout'])->name("checkout")->middleware('auth');
 Route::post('/uploadBuktiBayar', [HomeController::class, 'uploadBuktiBayar'])->name("uploadBuktiBayar")->middleware('auth');
 
+Route::get('profile', [ProfileController::class, 'index'])->middleware('auth');
+Route::post('profile/update', [ProfileController::class, 'update'])->middleware('auth')->name('profile-update');
+
+Route::get('kontak', function(){
+    return view('pages.kontak');
+});
+
 Route::resource('pesanan', UserTransaksiController::class)->middleware('auth');
 
 Route::get('/logout', [AuthController::class, 'logout'])->name("logout");
@@ -36,4 +45,7 @@ Route::post('proses-register', [AuthController::class, 'prosesRegister'])->name(
 Route::prefix('admin')->group(function(){
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('paket', PaketController::class);
+
+    Route::resource('pesanan-user', PesananController::class);
+    Route::get('approved/{id}', [PesananController::class, 'approved'])->name('approved');
 });
