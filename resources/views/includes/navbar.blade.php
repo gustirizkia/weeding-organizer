@@ -10,10 +10,13 @@
             <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/">Home</a>
+                    <a class="nav-link {{request()->is("/") ? 'active' : ''}}" aria-current="page" href="/">Home</a>
                 </li>
                 <li class="nav-item ms-md-4">
-                    <a class="nav-link" href="/kontak">Kontak</a>
+                    <a class="nav-link {{request()->is("portofolio") ? 'active' : ''}}" href="/portofolio">Portofolio</a>
+                </li>
+                <li class="nav-item ms-md-4">
+                    <a class="nav-link {{request()->is("kontak") ? 'active' : ''}}" href="/kontak">Kontak</a>
                 </li>
                 @if (auth()->user())
                     <li class="nav-item dropdown ms-md-4">

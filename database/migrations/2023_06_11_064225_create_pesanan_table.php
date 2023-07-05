@@ -17,6 +17,8 @@ return new class extends Migration
             $table->bigInteger('paket_id');
             $table->string('nomor_pesanan');
             $table->date('tanggal_booking');
+            $table->string('alamat');
+            $table->bigInteger('no_wa');
             $table->string('status')->default('proses');
             $table->string('bukti_bayar')->nullable();
         });

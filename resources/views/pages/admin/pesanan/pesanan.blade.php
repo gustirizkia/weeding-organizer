@@ -5,6 +5,7 @@
 @endsection
 
 @push('addStyle')
+<link rel="stylesheet" href="{{asset('js/lightbox2-2.11.4/src/css/lightbox.css')}}">
     <style>
         .bukti_bayar{
             height: 16px;
@@ -45,11 +46,18 @@
                                 <td>{{$item->name}}</td>
                                 <td>{{$item->nomor_pesanan}}</td>
                                 <td>{{$item->tanggal_booking}}</td>
-                                <td><img src="{{asset("storage/$item->bukti_bayar")}}" class="bukti_bayar" alt=""></td>
+                                <td>
+                                    <a href="{{asset("storage/$item->bukti_bayar")}}" data-lightbox="{{$item->status}}" data-title="{{$item->status}}">
+
+                                        <img src="{{asset("storage/$item->bukti_bayar")}}" class="bukti_bayar" alt="">
+                                    </a>
+                                </td>
                                 <td>{{$item->status}}</td>
                                 <td>
-                                    <a href="" class="btn btn-info btn-sm">Detail</a>
-                                    <a href="{{route('approved', $item->id)}}" class="btn btn-success btn-sm ms-2">Approve</a>
+                                    <a href="/detail-transaksi?nomor_pesanan={{$item->nomor_pesanan}}" class="btn btn-info btn-sm">Detail</a>
+                                    @if ($item->status === 'proses')
+                                        <a href="{{route('approved', $item->id)}}" class="btn btn-success btn-sm ms-2">Approve</a>
+                                    @endif
                                 </td>
                             </tr>
                         @empty
@@ -61,3 +69,14 @@
         </div>
     </div>
 @endsection
+
+
+@push('addScript')
+    <script src="{{asset('js/lightbox2-2.11.4/src/js/lightbox.js')}}"></script>
+    <script>
+        lightbox.option({
+        'resizeDuration': 200,
+        'wrapAround': true
+        })
+    </script>
+@endpush

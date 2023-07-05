@@ -22,7 +22,7 @@
     <div class="container mt-3">
         <div class="row justify-content-center">
             <div class="col-md-9">
-                <div class="card">
+                <div class="card mb-3">
                     <div class="card-body">
 
                     @if ($errors->any())
@@ -34,7 +34,7 @@
                             </ul>
                         </div>
                     @endif
-                        <div class="d-flex justify-content-between">
+                        <div class="d-md-flex justify-content-between">
                             <div class="">
                                 <div class="title fw-bold">Nomor Pesanan</div>
                                 <div class="subtitle text-secondary">{{$pesanan->nomor_pesanan}}</div>
@@ -42,12 +42,17 @@
                                 <div class="subtitle text-secondary">{{$pesanan->nama_paket}}</div>
                                 <div class="title fw-bold mt-3">Tanggal Pemesanan</div>
                                 <div class="subtitle text-secondary">{{$pesanan->tanggal_booking}}</div>
+                                <div class="title fw-bold mt-3">Nomor WhatsApp</div>
+                                <div class="subtitle text-secondary">{{$pesanan->no_wa}}</div>
+
                             </div>
-                            <div class="text-end">
+                            <div class="text-md-end mt-3 mt-md-0">
                                 <div class="title fw-bold">Total Pembayaran</div>
                                 <div class="subtitle text-secondary">Rp {{number_format($pesanan->harga_paket)}}</div>
                                 <div class="title fw-bold mt-3">Status Pesanan</div>
                                 <div class="subtitle text-secondary">{{$pesanan->status}}</div>
+                                <div class="title fw-bold mt-3">Alamat Pesanan</div>
+                                <div class="subtitle text-secondary">{{$pesanan->alamat}}</div>
                             </div>
                         </div>
                         @if (!$pesanan->bukti_bayar)

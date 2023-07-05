@@ -71,4 +71,11 @@ class HomeController extends Controller
 
         return view('pages.transaksi.detail', compact('pesanan'));
     }
+
+    public function Portofolio(Request $request)
+    {
+        $data = DB::table("portofolio")->get();
+
+        return view('pages.portofolio', compact('data'));
+    }
 }
