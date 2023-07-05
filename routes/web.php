@@ -44,7 +44,7 @@ Route::post('/proses-login', [AuthController::class, 'prosesLogin'])->name('pros
 Route::get('register', [AuthController::class, 'registerPage']);
 Route::post('proses-register', [AuthController::class, 'prosesRegister'])->name('prosesRegister');
 
-Route::prefix('admin')->group(function(){
+Route::prefix('admin')->middleware('auth', 'admin')->group(function(){
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('paket', PaketController::class);
 
