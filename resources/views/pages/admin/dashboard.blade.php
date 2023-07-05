@@ -46,7 +46,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="h4 text-danger">
-                    Pesanan
+                    Portofolio
                 </div>
                 <div class="h2 mb-0">
                     {{$data['count_portofolio']}}
