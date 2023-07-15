@@ -86,4 +86,13 @@ class PesananController extends Controller
 
         return redirect()->back()->with('success', "Berhasil Approve Pesanan");
     }
+
+    public function cancelOrder($id)
+    {
+        $data = DB::table('pesanan')->where('id', $id)->update([
+            'status' => 'Cancel'
+        ]);
+
+        return redirect()->back()->with('success', "Berhasil cancel pesanan");
+    }
 }

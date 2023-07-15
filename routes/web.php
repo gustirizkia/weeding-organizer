@@ -51,4 +51,5 @@ Route::prefix('admin')->middleware('auth', 'admin')->group(function(){
     Route::resource('pesanan-user', PesananController::class);
     Route::resource('portofolio', PortofolioController::class);
     Route::get('approved/{id}', [PesananController::class, 'approved'])->name('approved');
+    Route::get('cancelOrder/{id}', [PesananController::class, 'cancelOrder'])->name('cancelOrder');
 });

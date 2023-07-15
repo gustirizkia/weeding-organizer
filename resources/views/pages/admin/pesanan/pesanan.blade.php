@@ -54,10 +54,15 @@
                                 </td>
                                 <td>{{$item->status}}</td>
                                 <td>
-                                    <a href="/detail-transaksi?nomor_pesanan={{$item->nomor_pesanan}}" class="btn btn-info btn-sm">Detail</a>
-                                    @if ($item->status === 'proses')
-                                        <a href="{{route('approved', $item->id)}}" class="btn btn-success btn-sm ms-2">Approve</a>
-                                    @endif
+                                    <div class="d-flex">
+                                        <a href="/detail-transaksi?nomor_pesanan={{$item->nomor_pesanan}}" class="btn btn-info btn-sm">Detail</a>
+                                        @if ($item->status !== 'Approved')
+                                            <a href="{{route('approved', $item->id)}}" class="btn btn-success btn-sm ms-2">Approve</a>
+                                        @endif
+                                        @if ($item->status !== 'Cancel')
+                                            <a href="{{route('cancelOrder', $item->id)}}" class="btn btn-danger btn-sm ms-2">Cancel</a>
+                                        @endif
+                                    </div>
                                 </td>
                             </tr>
                         @empty
