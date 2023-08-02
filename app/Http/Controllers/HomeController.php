@@ -32,6 +32,15 @@ class HomeController extends Controller
             'paket_id' => 'required|exists:paket_weeding,id'
         ]);
 
+        $cekTanggal = DB::table("pesanan")->where('tanggal_booking', $request->tanggal_booking)->first();
+
+        if($cekTanggal){
+            if($cekTanggal->bukti_bayar && $cekTanggal->status !== "Cancel"){
+                // dd($cekTanggal);
+                return redirect()->back()->withInput()->with("error", "Tanggal $request->tanggal_booking sudah penuh");
+            }
+        }
+
         $data = $request->except('_token');
 
         $data['nomor_pesanan'] = "INV/".time();

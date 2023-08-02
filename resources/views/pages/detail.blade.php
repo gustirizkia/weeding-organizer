@@ -51,15 +51,15 @@
                             <input type="number" name="paket_id" hidden value="{{$item->id}}">
                             <div class="mb-3">
                                 <label for="">Jadwal Pemesanan</label>
-                                <input type="date" class="mt-2 form-control" name="tanggal_booking" required>
+                                <input type="date" class="mt-2 form-control" value="{{old("tanggal_booking")}}" name="tanggal_booking" required>
                             </div>
                             <div class="mb-3">
                                 <label for="">Nomor WhatsApp</label>
-                                <input type="number" class="form-control" name="no_wa" required>
+                                <input type="number" class="form-control" name="no_wa" value="{{old("no_wa")}}" required>
                             </div>
                             <div class="mb-3">
                                 <label for="">Alamat</label>
-                                <input type="text" class="form-control" name="alamat" required>
+                                <input type="text" class="form-control" name="alamat" value="{{old("alamat")}}" required>
                             </div>
                             <button type="submit" class="btn btn__primary mt-3 btn-block w-100">Lanjut Pemesanan</button>
                         </form>

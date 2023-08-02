@@ -21,7 +21,7 @@
         <div class="h3 mb-5">Lihat Portofolio Kami</div>
         <div class="row">
             @foreach ($data as $item)
-                <div class="col-md-4">
+                <div class="col-md-4 mb-3">
                     <a href="{{asset("storage/$item->photo")}}" data-lightbox="{{$item->deskripsi}}" data-title="{{$item->deskripsi}}">
 
                         <img src="{{asset("storage/$item->photo")}}" class=" rounded " alt="">
