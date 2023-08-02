@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -32,11 +33,17 @@ class HomeController extends Controller
             'paket_id' => 'required|exists:paket_weeding,id'
         ]);
 
+        $now = Carbon::now();
+        $tanggal_booking = Carbon::parse($request->tanggal_booking);
+        if($tanggal_booking < $now){
+            return redirect()->back()->withInput()->with("error", "Tanggal yang anda pilih sudah lewat");
+        }
+
         $cekTanggal = DB::table("pesanan")->where('tanggal_booking', $request->tanggal_booking)->first();
 
         if($cekTanggal){
             if($cekTanggal->bukti_bayar && $cekTanggal->status !== "Cancel"){
-                // dd($cekTanggal);
+
                 return redirect()->back()->withInput()->with("error", "Tanggal $request->tanggal_booking sudah penuh");
             }
         }
