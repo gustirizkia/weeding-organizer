@@ -21,11 +21,7 @@
     @include('includes.navbar')
     <main>
         <div class="container">
-            @if (Session::get('success'))
-                <div class="alert alert-success mb-3" role="alert">
-                    {{Session::get('success')}}
-                </div>
-            @endif
+
         </div>
          @yield('content')
     </main>
@@ -44,6 +40,15 @@
             Swal.fire({
                 icon: "error",
                 title: "{{Session::get("error")}}"
+            });
+        </script>
+    @endif
+
+    @if (Session::get('success'))
+        <script>
+            Swal.fire({
+                icon: "success",
+                title: "{{Session::get("success")}}"
             });
         </script>
     @endif
